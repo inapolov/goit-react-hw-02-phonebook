@@ -23,22 +23,43 @@ class App extends React.Component {
     }))
   }
 
-  formSubmitHandler = data => {
+  // formSubmitHandler = data => {
     
+  //   const contact = {
+  //     id: nanoid(),
+  //     name: data.name,
+  //     number: data.number,
+  //   };  
+    
+  //   this.setState((prevState) => {      
+  //     prevState.contacts.map(item => {
+  //       if (contact.name === item.name) {
+  //        return alert(`${item.name} is already in contacts.`);
+          
+  //       }          
+  //     })      
+    
+  //     return {
+  //       contacts: [contact, ...prevState.contacts],
+  //     }
+  //   });
+  // }
+
+  formSubmitHandler = data => {
     const contact = {
       id: nanoid(),
       name: data.name,
       number: data.number,
-    };
-    
-    
-    this.setState((prevState) => {
-      console.log(contact.name);
-      console.log(prevState.contacts);
-      if (contact.name === prevState.contacts.name) {
-        return alert("${data.name} is already in contacts. ")
+    }; 
+
+    for (const item of this.state.contacts) {
+      if (item.name.toLowerCase() === data.name.toLowerCase()) {
+        alert(`${item.name} is already in contacts`);
+        return;
       }
-    
+    }
+
+    this.setState((prevState) => {     
       return {
         contacts: [contact, ...prevState.contacts],
       }
