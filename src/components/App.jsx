@@ -1,5 +1,6 @@
 import React from "react";
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import Form from './Form';
 import ContactList from "./ContactList";
 import Filter from "./Filter";
@@ -23,27 +24,6 @@ class App extends React.Component {
     }))
   }
 
-  // formSubmitHandler = data => {
-    
-  //   const contact = {
-  //     id: nanoid(),
-  //     name: data.name,
-  //     number: data.number,
-  //   };  
-    
-  //   this.setState((prevState) => {      
-  //     prevState.contacts.map(item => {
-  //       if (contact.name === item.name) {
-  //        return alert(`${item.name} is already in contacts.`);
-          
-  //       }          
-  //     })      
-    
-  //     return {
-  //       contacts: [contact, ...prevState.contacts],
-  //     }
-  //   });
-  // }
 
   formSubmitHandler = data => {
     const contact = {
@@ -91,6 +71,11 @@ class App extends React.Component {
     )
   };
 
+};
+
+App.propTypes = {
+  filter: PropTypes.string,
+  contacts: PropTypes.arrayOf(PropTypes.shape),
 };
 
 export default App;

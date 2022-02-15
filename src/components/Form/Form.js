@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './Form.module.css';
 
 class Form extends React.Component{
@@ -61,6 +62,11 @@ class Form extends React.Component{
         </form>
         );
     }
-}
+};
+
+Form.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+};
 
 export default Form;
